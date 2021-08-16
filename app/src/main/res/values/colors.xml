@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="MainColor">#25D366</color>
     <color name="SplashScreenTagColor">#565D5C</color>
+    <color name="menutextcolor">#302F2F</color>
 </resources>

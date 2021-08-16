@@ -53,7 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        app:srcCompat="@drawable/subone" />
+        app:srcCompat="@drawable/subtraction_4" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -61,7 +61,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        app:srcCompat="@drawable/subtwo" />
+        app:srcCompat="@drawable/subtraction_5" />
 
 
 </RelativeLayout>
