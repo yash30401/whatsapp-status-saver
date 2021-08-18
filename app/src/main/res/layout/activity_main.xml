@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="wrap_content"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/MainColor"
@@ -21,8 +23,8 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start"
-            android:gravity="center_vertical"
             android:layout_marginLeft="20dp"
+            android:gravity="center_vertical"
             android:orientation="vertical"
 
             >
@@ -54,24 +56,47 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_weight="1"
+            android:fontFamily="@font/poppins_medium"
+            android:layout_marginLeft="20dp"
+            android:text="@string/app_name"
             android:textAlignment="center"
             android:textColor="@color/white"
-
-            android:layout_gravity="center"
-            android:fontFamily="@font/poppins_medium"
-            android:text="@string/app_name"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            tools:ignore="TextContrastCheck" />
 
         <Button
             android:id="@+id/button"
-            android:layout_width="40dp"
+            android:layout_width="48dp"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:layout_marginRight="10dp"
             android:background="@android:color/transparent"
             app:icon="@drawable/ic_round_help_24"
-            app:iconTint="@color/white" />
+            app:iconTint="@color/white"
+            tools:ignore="SpeakableTextPresentCheck" />
 
     </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipe"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true">
+
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+
+</LinearLayout>
