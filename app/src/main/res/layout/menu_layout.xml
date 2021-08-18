@@ -4,17 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    android:layout_marginLeft="20dp"
-    android:layout_marginTop="20dp"
-    android:layout_marginBottom="20dp"
     android:layout_gravity="start"
-    >
+    android:layout_marginStart="20dp"
+    android:layout_marginTop="20dp"
+    android:layout_marginBottom="20dp">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginEnd="30dp"
         app:cardCornerRadius="20dp"
-        android:layout_marginRight="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,31 +26,186 @@
 
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/homeIcon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="43dp"
+                android:layout_marginTop="70dp"
+                android:onClick="iconHomePage"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/home" />
+                app:srcCompat="@drawable/home"
+                tools:ignore="ImageContrastCheck"
+                android:contentDescription="@string/todo" />
 
             <Button
                 android:id="@+id/Home"
                 android:layout_width="160dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="19dp"
-                android:layout_marginTop="48dp"
+                android:layout_marginTop="73dp"
                 android:layout_marginEnd="22dp"
+                android:onClick="homePage"
                 android:background="@android:color/transparent"
                 android:fontFamily="@font/poppins"
                 android:text="@string/home"
-                android:textColor="@color/menutextcolor"
                 android:textAlignment="textStart"
-                android:textSize="20sp"
+                android:textColor="@color/menutextcolor"
+                android:textSize="15sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageView3"
+                app:layout_constraintStart_toEndOf="@+id/homeIcon"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/backButton"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@android:color/transparent"
+                android:onClick="closedialog"
+                app:icon="@drawable/ic_baseline_arrow_back_ios_24"
+                app:iconTint="@color/menutextcolor"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <ImageView
+                android:id="@+id/downloadsIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="35dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/homeIcon"
+                app:srcCompat="@drawable/downloads" />
+
+            <Button
+                android:id="@+id/downloads"
+                android:layout_width="160dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="42dp"
+                android:layout_marginEnd="22dp"
+                android:text="@string/downloads"
+                android:textAlignment="textStart"
+                android:textSize="15sp"
+                android:fontFamily="@font/poppins"
+                android:textColor="@color/menutextcolor"
+                android:background="@android:color/transparent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/downloadsIcon"
+                app:layout_constraintTop_toBottomOf="@+id/Home" />
+
+            <ImageView
+                android:id="@+id/howtoicon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="35dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/downloadsIcon"
+                app:srcCompat="@drawable/howto" />
+
+            <Button
+                android:id="@+id/howtouse"
+                android:layout_width="160dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="42dp"
+                android:layout_marginEnd="22dp"
+                android:text="@string/howto"
+                android:background="@android:color/transparent"
+                android:textSize="15sp"
+                android:textAlignment="textStart"
+                android:textColor="@color/menutextcolor"
+                android:fontFamily="@font/poppins"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/howtoicon"
+                app:layout_constraintTop_toBottomOf="@+id/downloads" />
+
+            <ImageView
+                android:id="@+id/abouticon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="35dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/howtoicon"
+                app:srcCompat="@drawable/about" />
+
+            <Button
+                android:id="@+id/aboutbutton"
+                android:layout_width="160dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="42dp"
+                android:layout_marginEnd="22dp"
+                android:text="@string/about"
+                android:background="@android:color/transparent"
+                android:textColor="@color/menutextcolor"
+                android:textSize="15sp"
+                android:fontFamily="@font/poppins"
+                android:textAlignment="textStart"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/abouticon"
+                app:layout_constraintTop_toBottomOf="@+id/howtouse" />
+
+            <ImageView
+                android:id="@+id/privacyicon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="35dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/abouticon"
+                app:srcCompat="@drawable/privacy" />
+
+            <Button
+                android:id="@+id/privacybutton"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="22dp"
+                android:text="@string/privacypolicy"
+                android:textAlignment="textStart"
+                android:background="@android:color/transparent"
+                android:textColor="@color/menutextcolor"
+                android:textSize="15sp"
+                android:fontFamily="@font/poppins"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/privacyicon"
+                app:layout_constraintTop_toBottomOf="@+id/aboutbutton" />
+
+            <ImageView
+                android:id="@+id/termsicon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="45dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/privacyicon"
+                app:srcCompat="@drawable/terms" />
+
+            <Button
+                android:id="@+id/termsbutton"
+                android:layout_width="160dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="42dp"
+                android:layout_marginEnd="22dp"
+                android:text="@string/terms"
+                android:textSize="15sp"
+                android:background="@android:color/transparent"
+                android:textColor="@color/menutextcolor"
+                android:fontFamily="@font/poppins"
+                android:textAlignment="textStart"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/termsicon"
+                app:layout_constraintTop_toBottomOf="@+id/privacybutton" />
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>

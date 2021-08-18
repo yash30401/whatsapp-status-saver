@@ -6,6 +6,8 @@
     <string name="downloads">Downloads</string>
     <string name="howto">How To Use?</string>
     <string name="about">About</string>
+    <string name="privacypolicyformenu">Privacy \n policy</string>
     <string name="privacypolicy">Privacy policy</string>
     <string name="terms">Terms &amp; Cond</string>
+    <string name="todo">TODO</string>
 </resources>
