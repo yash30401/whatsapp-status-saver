@@ -72,7 +72,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
                     Intent intent=new Intent(context,PictureStatus.class);
                     intent.putExtra("DEST_PATH",destpath);
                     intent.putExtra("FILE",path);
-                    intent.putExtra("FILE",modelClass.getFilename());
+                    intent.putExtra("FILENAME",modelClass.getFilename());
                     intent.putExtra("URI",modelClass.getUri().toString());
                     context.startActivity(intent);
 
