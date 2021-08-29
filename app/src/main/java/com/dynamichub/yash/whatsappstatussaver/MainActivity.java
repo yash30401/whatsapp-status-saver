@@ -50,13 +50,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        recyclerView=findViewById(R.id.recyclerview);
+        refreshLayout=findViewById(R.id.swipe);
         layoutMenuicon=findViewById(R.id.layout_menu_icon);
         dialog=new Dialog(this);
         Button dialogclosebutton= dialog.findViewById(R.id.backButton);
         Button home=dialog.findViewById(R.id.Home);
-        recyclerView=findViewById(R.id.recyclerview);
-        refreshLayout=findViewById(R.id.swipe);
+
        // setuplayout();
 
 
@@ -148,12 +148,61 @@ public class MainActivity extends AppCompatActivity {
             }
 
 
-        }else{
-            setuplayout();
-        }
-    }
+                if (checkSelfPermission(Manifest.permission.INTERNET) == PackageManager.PERMISSION_GRANTED) {
 
-    private void openMenu() {
+                    setuplayout();
+
+                } else {
+                    ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.INTERNET}, requestCode);
+                }
+
+
+                    if (checkSelfPermission(Manifest.permission.ACCESS_WIFI_STATE) == PackageManager.PERMISSION_GRANTED) {
+
+                        setuplayout();
+
+                    } else {
+                        ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_WIFI_STATE}, requestCode);
+                    }
+
+
+                        if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+
+                            setuplayout();
+
+                        } else {
+                            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, requestCode);
+                        }
+
+
+                            if (checkSelfPermission(Manifest.permission.BLUETOOTH) == PackageManager.PERMISSION_GRANTED) {
+
+                                setuplayout();
+
+                            } else {
+                                ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.BLUETOOTH}, requestCode);
+                            }
+
+
+                                if (checkSelfPermission(Manifest.permission.ACCESS_NETWORK_STATE) == PackageManager.PERMISSION_GRANTED) {
+
+                                    setuplayout();
+
+                                } else {
+                                    ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_NETWORK_STATE}, requestCode);
+                                }
+
+
+                            } else {
+                                setuplayout();
+                            }
+                        }
+
+
+
+
+
+    private void openMenu(){
         //This Function Opens The Menu
         dialog.setContentView(R.layout.menu_layout);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -163,7 +212,7 @@ public class MainActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    private void closedialog(View view){
+    public void closedialog(View view){
         dialog.dismiss();
     }
 
