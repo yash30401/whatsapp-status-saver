@@ -1,12 +1,17 @@
 package com.dynamichub.yash.whatsappstatussaver;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
 
 import android.app.Dialog;
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -31,14 +36,9 @@ public class VideoStatus extends AppCompatActivity {
 
         particularVideo=findViewById(R.id.particularVideo);
         downloadstatus=findViewById(R.id.downloadStatus);
-        sharestatus=findViewById(R.id.shareStatus);
+        sharestatus=findViewById(R.id.shareStatusVideo);
 
-        sharestatus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getApplicationContext(),"Share",Toast.LENGTH_LONG).show();
-            }
-        });
+
 
 
         Intent intent=getIntent();
@@ -59,6 +59,18 @@ public class VideoStatus extends AppCompatActivity {
         particularVideo.setVideoURI(uri1);
         particularVideo.requestFocus();
         particularVideo.start();
+
+        sharestatus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+                sharingIntent.setType("video/mp4"); //If it is a 3gp video use ("video/3gp")
+                Uri uri = Uri.parse(destpath+filename);
+                sharingIntent.putExtra(Intent.EXTRA_STREAM, uri);
+                startActivity(Intent.createChooser(sharingIntent, "Share Video!"));
+            }
+        });
 
         downloadstatus.setOnClickListener(new View.OnClickListener() {
             @Override

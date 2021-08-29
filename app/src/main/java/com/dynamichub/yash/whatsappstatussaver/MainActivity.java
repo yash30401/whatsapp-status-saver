@@ -2,8 +2,15 @@ package com.dynamichub.yash.whatsappstatussaver;
 
 import static android.os.Build.VERSION.SDK_INT;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -11,24 +18,40 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.app.Dialog;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.media.audiofx.Equalizer;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.os.Looper;
+import android.provider.Settings;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Toast;
+
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.MultiplePermissionsReport;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -43,21 +66,33 @@ public class MainActivity extends AppCompatActivity {
 
     ArrayList<ModelClass> fileslist=new ArrayList<>();
 
-    int requestCode=1;
+    ActivityResultLauncher<Intent> getpermission;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
         recyclerView=findViewById(R.id.recyclerview);
         refreshLayout=findViewById(R.id.swipe);
-        layoutMenuicon=findViewById(R.id.layout_menu_icon);
-        dialog=new Dialog(this);
-        Button dialogclosebutton= dialog.findViewById(R.id.backButton);
-        Button home=dialog.findViewById(R.id.Home);
 
-       // setuplayout();
+
+
+        getpermission=registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+            @Override
+            public void onActivityResult(ActivityResult result) {
+                if(result.getResultCode()==MainActivity.RESULT_OK){
+                    Toast.makeText(getApplicationContext(),"Permission Given",Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        takePermission();
+        setuplayout();
 
 
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -72,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
                         public void run() {
                             refreshLayout.setRefreshing(false);
                         }
-                    },1000);
+                    },2000);
                 }
 
 
@@ -80,7 +115,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        checkPermission();
+
+
+
+
+        layoutMenuicon=findViewById(R.id.layout_menu_icon);
+        dialog=new Dialog(this);
+        Button dialogclosebutton= dialog.findViewById(R.id.backButton);
+        Button home=dialog.findViewById(R.id.Home);
 
 
         layoutMenuicon.setOnClickListener(new View.OnClickListener() {
@@ -96,7 +138,65 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void setuplayout() {
+    public void takePermissions() {
+
+        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.R) {
+            try {
+
+                Intent intent=new Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION);
+                intent.addCategory("android.intent.category.DEFAULT");
+                intent.setData(Uri.parse(String.format("package:%s",getApplicationContext().getPackageName())));
+                getpermission.launch(intent);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }else{
+
+            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},101);
+
+        }
+    }
+
+    public  boolean isPermissionGranted(){
+
+        if(Build.VERSION.SDK_INT==Build.VERSION_CODES.R){
+            return Environment.isExternalStorageManager();
+        }else{
+            int readExternalStoragePermission= ContextCompat.checkSelfPermission(this,Manifest.permission.WRITE_EXTERNAL_STORAGE);
+            return readExternalStoragePermission==PackageManager.PERMISSION_GRANTED;
+        }
+
+
+    }
+
+    public void takePermission(){
+
+        if(isPermissionGranted()){
+            Log.d("Permission","Permission Already given");
+        }else{
+            takePermissions();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(grantResults.length>0){
+            if(requestCode==101){
+                boolean readExternalStorage=grantResults[0]==PackageManager.PERMISSION_GRANTED;
+                if(readExternalStorage){
+                    Log.d("Permissions","Permission allow in android 10 or below");
+                }else{
+                    takePermissions();
+                }
+            }
+        }
+
+    }
+
+    public void setuplayout() {
 
 
         fileslist.clear();
@@ -110,99 +210,42 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private ArrayList<ModelClass> getData() {
+    public ArrayList<ModelClass> getData() {
 
         ModelClass f;
-        String targetpath= Environment.getExternalStorageDirectory().getAbsolutePath()+Constant.FOLDER_NAME+"Media/.Statuses";
-        File targetdir=new File(targetpath);
+        String targetPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Android/media/com.whatsapp/WhatsApp/Media/.Statuses";
+        File targetDirector = new File(targetPath);
+        files = targetDirector.listFiles();
 
-        files=targetdir.listFiles();
 
-        for(int i=0; i<files.length;i++){
-            File file=files[i];
-            f=new ModelClass();
-            f.setUri(Uri.fromFile(file));
-            f.setPath(files[i].getAbsolutePath());
-            f.setFilename(file.getName());
-            if(!f.getUri().toString().endsWith(".nomedia")){
 
-                fileslist.add(f);
+
+
+            for (int i = 0; i < files.length; i++) {
+                File file = files[i];
+                f = new ModelClass();
+                f.setUri(Uri.fromFile(file));
+                f.setPath(files[i].getAbsolutePath());
+                f.setFilename(file.getName());
+                if (!f.getUri().toString().endsWith(".nomedia")) {
+
+                    fileslist.add(f);
+
+                }
 
             }
-
-        }
 
         return fileslist;
 
     }
 
-    public void checkPermission() {
-
-        if(SDK_INT>23){
-            if(checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)== PackageManager.PERMISSION_GRANTED){
-
-                setuplayout();
-
-            }else{
-                ActivityCompat.requestPermissions(MainActivity.this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},requestCode);
-            }
-
-
-                if (checkSelfPermission(Manifest.permission.INTERNET) == PackageManager.PERMISSION_GRANTED) {
-
-                    setuplayout();
-
-                } else {
-                    ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.INTERNET}, requestCode);
-                }
-
-
-                    if (checkSelfPermission(Manifest.permission.ACCESS_WIFI_STATE) == PackageManager.PERMISSION_GRANTED) {
-
-                        setuplayout();
-
-                    } else {
-                        ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_WIFI_STATE}, requestCode);
-                    }
-
-
-                        if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-
-                            setuplayout();
-
-                        } else {
-                            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, requestCode);
-                        }
-
-
-                            if (checkSelfPermission(Manifest.permission.BLUETOOTH) == PackageManager.PERMISSION_GRANTED) {
-
-                                setuplayout();
-
-                            } else {
-                                ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.BLUETOOTH}, requestCode);
-                            }
-
-
-                                if (checkSelfPermission(Manifest.permission.ACCESS_NETWORK_STATE) == PackageManager.PERMISSION_GRANTED) {
-
-                                    setuplayout();
-
-                                } else {
-                                    ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_NETWORK_STATE}, requestCode);
-                                }
-
-
-                            } else {
-                                setuplayout();
-                            }
-                        }
 
 
 
 
 
-    private void openMenu(){
+
+    public void openMenu(){
         //This Function Opens The Menu
         dialog.setContentView(R.layout.menu_layout);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));

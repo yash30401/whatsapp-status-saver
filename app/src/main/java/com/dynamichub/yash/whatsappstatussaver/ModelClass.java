@@ -4,17 +4,28 @@ import android.net.Uri;
 
 public class ModelClass {
 
-    String path,filename;
+    String name,path,filename;
     Uri uri;
 
 
-    public ModelClass(String path, String filename, Uri uri) {
+
+
+    public ModelClass(String name, String path, String filename, Uri uri) {
+        this.name=name;
         this.path = path;
         this.filename = filename;
         this.uri = uri;
     }
 
     public ModelClass() {
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPath() {
