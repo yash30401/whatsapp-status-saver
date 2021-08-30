@@ -86,7 +86,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="3dp"
+
         android:layout_below="@+id/linearLayout"
         android:background="@color/white">
 
@@ -106,6 +106,7 @@
                 android:layout_centerVertical="true"
                 android:fitsSystemWindows="true"
                 android:layout_gravity="center"
+                android:padding="10dp"
                 android:id="@+id/particularVideo"
                 android:layout_marginBottom="5dp"/>
 
@@ -125,7 +126,7 @@
                 android:background="@color/MainColor"
                 android:layout_weight="1"
                 android:src="@drawable/icon_feather_download"
-                android:layout_margin="1dp"
+                android:layout_marginRight="0.7dp"
                 android:layout_height="50dp"/>
 
             <ImageButton
@@ -133,7 +134,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_weight="1"
-                android:layout_margin="1dp"
+                android:layout_marginLeft="0.7dp"
                 android:src="@drawable/ic_baseline_share_24"
                 android:background="@color/MainColor"
                 />
