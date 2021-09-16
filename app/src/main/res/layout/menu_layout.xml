@@ -105,6 +105,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="35dp"
+                android:onClick="iconhowto"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/downloadsIcon"
                 app:srcCompat="@drawable/howto" />
@@ -122,6 +123,7 @@
                 android:textAlignment="textStart"
                 android:textColor="@color/menutextcolor"
                 android:fontFamily="@font/poppins"
+                android:onClick="howtouse"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/howtoicon"
                 app:layout_constraintTop_toBottomOf="@+id/downloads" />

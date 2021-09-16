@@ -198,4 +198,21 @@ public class Downloads extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void iconhowto(View view){
+        dialog.dismiss();
+        Dialog dialog=new Dialog(Downloads.this);
+        dialog.setContentView(R.layout.howtolayout);
+        dialog.show();
+
+    }
+
+    public void howtouse(View view){
+        dialog.dismiss();
+        Dialog dialog2=new Dialog(Downloads.this);
+        dialog2.setContentView(R.layout.howtolayout);
+
+        dialog2.show();
+
+    }
+
 }

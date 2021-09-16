@@ -1,6 +1,6 @@
 package com.dynamichub.yash.whatsappstatussaver;
 
-import static android.os.Build.VERSION.SDK_INT;
+
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -10,29 +10,28 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
+
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 
 import android.Manifest;
-import android.app.Activity;
-import android.app.ActivityManager;
+
 import android.app.Dialog;
 
-import android.content.Context;
+
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.media.audiofx.Equalizer;
+
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
-import android.os.Looper;
+
 import android.provider.Settings;
 import android.util.Log;
 import android.view.Gravity;
@@ -42,16 +41,11 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.karumi.dexter.Dexter;
-import com.karumi.dexter.MultiplePermissionsReport;
-import com.karumi.dexter.PermissionToken;
-import com.karumi.dexter.listener.PermissionRequest;
-import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
+
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+
 
 
 public class MainActivity extends AppCompatActivity {
@@ -295,6 +289,22 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    public void iconhowto(View view){
+        dialog.dismiss();
+        Dialog dialog=new Dialog(MainActivity.this);
+        dialog.setContentView(R.layout.howtolayout);
+        dialog.show();
+
+    }
+
+    public void howtouse(View view){
+        dialog.dismiss();
+        Dialog dialog2=new Dialog(MainActivity.this);
+        dialog2.setContentView(R.layout.howtolayout);
+
+        dialog2.show();
+
+    }
 
 
 }

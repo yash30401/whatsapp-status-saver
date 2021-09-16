@@ -16,5 +16,6 @@
     <string name="three">3</string>
     <string name="openwhatsapp">Open Whatsapp</string>
     <string name="watchstatuses">Watch All Statuses</string>
+    <string name="opendownloader">Open Downloader App</string>
 
 </resources>
