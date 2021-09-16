@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context=".PictureStatus">
-
-
+    android:background="#E7E6E6"
+    tools:context=".Downloads">
 
 
 
@@ -82,53 +82,23 @@
 
     </LinearLayout>
 
-
-    <RelativeLayout
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeDownloads"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="match_parent">
 
-        android:layout_below="@+id/linearLayout"
-        android:background="@color/white">
-
-        <ImageView
-            android:id="@+id/particularimage"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerviewDownloads"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@+id/components"
-            android:layout_centerInParent="true"
-            android:padding="10dp"
-            android:src="@mipmap/ic_launcher_round" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:id="@+id/components"
-            android:layout_alignParentBottom="true"
-            android:orientation="horizontal"
-
-            android:layout_height="wrap_content">
-
-            <ImageButton
-                android:id="@+id/downloadStatus"
-                android:layout_width="match_parent"
-                android:background="@color/MainColor"
-                android:layout_weight="1"
-                android:src="@drawable/icon_feather_download"
-                android:layout_marginRight="0.7dp"
-                android:layout_height="50dp"/>
-
-            <ImageButton
-                android:id="@+id/shareStatus"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_weight="1"
-                android:layout_marginLeft="0.7dp"
-                android:src="@drawable/ic_baseline_share_24"
-                android:background="@color/MainColor"
-                />
-
-        </LinearLayout>
-
-    </RelativeLayout>
+            android:fitsSystemWindows="true">
 
 
-</RelativeLayout>
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+
+
+</LinearLayout>

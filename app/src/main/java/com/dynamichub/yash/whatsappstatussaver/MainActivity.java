@@ -271,6 +271,17 @@ public class MainActivity extends AppCompatActivity {
     startActivity(intent);
     }
 
+    public void iconDownload(View view){
+        //When someone clicks on icon of menu of home this function runs
+        Intent intent=new Intent(this,Downloads.class);
+        startActivity(intent);
+    }
+
+    public void download(View view){
+        //When someone clicks on button of menu of home this function runs
+        Intent intent=new Intent(this,Downloads.class);
+        startActivity(intent);
+    }
 
 
 

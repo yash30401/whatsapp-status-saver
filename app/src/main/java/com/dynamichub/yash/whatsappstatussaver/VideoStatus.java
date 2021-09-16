@@ -7,15 +7,20 @@ import android.app.Dialog;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.view.Gravity;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.MediaController;
 import android.widget.Toast;
 import android.widget.VideoView;
@@ -29,6 +34,9 @@ public class VideoStatus extends AppCompatActivity {
     VideoView particularVideo;
     ImageButton downloadstatus,sharestatus;
 
+    LinearLayout layoutMenuicon;
+    Dialog dialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +45,19 @@ public class VideoStatus extends AppCompatActivity {
         particularVideo=findViewById(R.id.particularVideo);
         downloadstatus=findViewById(R.id.downloadStatus);
         sharestatus=findViewById(R.id.shareStatusVideo);
+        layoutMenuicon=findViewById(R.id.layout_menu_icon);
+        dialog=new Dialog(this);
+        Button dialogclosebutton= dialog.findViewById(R.id.backButton);
+        Button home=dialog.findViewById(R.id.Home);
 
+        layoutMenuicon.setOnClickListener(new View.OnClickListener() {
+            //On click at the meenu icon at the top of the bar
+
+            @Override
+            public void onClick(View view) {
+                openMenu();
+            }
+        });
 
 
 
@@ -116,4 +136,46 @@ public class VideoStatus extends AppCompatActivity {
 
 
 
-    }}
+    }
+    public void openMenu(){
+        //This Function Opens The Menu
+        dialog.setContentView(R.layout.menu_layout);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().setGravity(Gravity.START);
+        dialog.getWindow().setLayout(920, WindowManager.LayoutParams.MATCH_PARENT);
+
+        dialog.show();
+    }
+
+    public void closedialog(View view){
+        dialog.dismiss();
+    }
+
+
+    public void iconHomePage(View view){
+        //When someone clicks on icon of menu of home this function runs
+        Intent intent=new Intent(this,MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void homePage(View view){
+        //When someone clicks on button of menu of home this function runs
+        Intent intent=new Intent(this,MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void iconDownload(View view){
+        //When someone clicks on icon of menu of home this function runs
+        Intent intent=new Intent(this,Downloads.class);
+        startActivity(intent);
+    }
+
+    public void download(View view){
+        //When someone clicks on button of menu of home this function runs
+        Intent intent=new Intent(this,Downloads.class);
+        startActivity(intent);
+    }
+
+
+
+}

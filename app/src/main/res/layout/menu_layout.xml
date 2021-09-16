@@ -76,6 +76,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="35dp"
+                android:onClick="iconDownload"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/homeIcon"
                 app:srcCompat="@drawable/downloads" />
@@ -90,6 +91,7 @@
                 android:text="@string/downloads"
                 android:textAlignment="textStart"
                 android:textSize="15sp"
+                android:onClick="download"
                 android:fontFamily="@font/poppins"
                 android:textColor="@color/menutextcolor"
                 android:background="@android:color/transparent"

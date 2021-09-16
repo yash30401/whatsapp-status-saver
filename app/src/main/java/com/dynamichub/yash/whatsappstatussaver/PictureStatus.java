@@ -3,12 +3,15 @@ package com.dynamichub.yash.whatsappstatussaver;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -25,6 +28,8 @@ import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Set;
 
 public class PictureStatus extends AppCompatActivity {
 
@@ -32,6 +37,9 @@ public class PictureStatus extends AppCompatActivity {
     ImageView particularimage;
     ImageButton downloadstatus,sharestatus;
     Dialog dialog;
+
+    ArrayList<String> pathdownloads;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +56,9 @@ public class PictureStatus extends AppCompatActivity {
         Button dialogclosebutton= dialog.findViewById(R.id.backButton);
         Button home=dialog.findViewById(R.id.Home);
 
+        pathdownloads=new ArrayList<>();
+
+
 
         layoutMenuicon.setOnClickListener(new View.OnClickListener() {
             //On click at the meenu icon at the top of the bar
@@ -61,11 +72,16 @@ public class PictureStatus extends AppCompatActivity {
 
 
 
+
+
         Intent intent=getIntent();
         String destpath=intent.getStringExtra("DEST_PATH");
         String file=intent.getStringExtra("FILE");
         String uri=intent.getStringExtra("URI");
         String filename=intent.getStringExtra("FILENAME");
+
+
+
 
         File destpath2=new File(destpath);
         File file1=new File(file);
@@ -89,6 +105,12 @@ public class PictureStatus extends AppCompatActivity {
             public void onClick(View view) {
                 try{
             FileUtils.copyFileToDirectory(file1,destpath2);
+
+            pathdownloads.add(file);
+            prefconfig.writelistinpref(getApplicationContext(),pathdownloads);
+
+
+
                 }catch(IOException e){
                     e.printStackTrace();
                 }
@@ -145,5 +167,30 @@ public class PictureStatus extends AppCompatActivity {
         dialog.dismiss();
     }
 
+
+
+    public void iconHomePage(View view){
+        //When someone clicks on icon of menu of home this function runs
+        Intent intent=new Intent(this,MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void homePage(View view){
+        //When someone clicks on button of menu of home this function runs
+        Intent intent=new Intent(this,MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void iconDownload(View view){
+        //When someone clicks on icon of menu of home this function runs
+        Intent intent=new Intent(this,Downloads.class);
+        startActivity(intent);
+    }
+
+    public void download(View view){
+        //When someone clicks on button of menu of home this function runs
+        Intent intent=new Intent(this,Downloads.class);
+        startActivity(intent);
+    }
 
 }
