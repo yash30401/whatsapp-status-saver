@@ -11,4 +11,10 @@
     <string name="terms">Terms &amp; Cond</string>
     <string name="todo">TODO</string>
     <string name="ok">OK</string>
+    <string name="one">1</string>
+    <string name="two">2</string>
+    <string name="three">3</string>
+    <string name="openwhatsapp">Open Whatsapp</string>
+    <string name="watchstatuses">Watch All Statuses</string>
+
 </resources>

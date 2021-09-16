@@ -67,7 +67,7 @@
             tools:ignore="TextContrastCheck" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/howto"
             android:layout_width="48dp"
             android:layout_height="wrap_content"
             android:layout_gravity="end"

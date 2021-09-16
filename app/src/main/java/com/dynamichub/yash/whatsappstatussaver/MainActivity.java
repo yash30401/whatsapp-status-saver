@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
     ActivityResultLauncher<Intent> getpermission;
 
+    Button howto;
 
 
     @Override
@@ -118,10 +119,11 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
+        howto=findViewById(R.id.howto);
         layoutMenuicon=findViewById(R.id.layout_menu_icon);
         dialog=new Dialog(this);
         Button dialogclosebutton= dialog.findViewById(R.id.backButton);
+
         Button home=dialog.findViewById(R.id.Home);
 
 
@@ -134,6 +136,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        howto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Dialog dialog=new Dialog(MainActivity.this);
+                dialog.setContentView(R.layout.howtolayout);
+                dialog.show();
+            }
+        });
 
 
     }
