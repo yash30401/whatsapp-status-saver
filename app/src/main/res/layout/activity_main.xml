@@ -24,6 +24,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="start"
             android:layout_marginLeft="20dp"
+
             android:gravity="center_vertical"
             android:orientation="vertical"
 
@@ -32,12 +33,15 @@
             <View
                 android:id="@+id/divider"
                 android:layout_width="30dp"
+                android:backgroundTint="@color/white"
+
                 android:layout_height="2dp"
                 android:background="@color/white" />
 
             <View
                 android:id="@+id/divider2"
                 android:layout_width="25dp"
+                android:backgroundTint="@color/white"
                 android:layout_height="2dp"
                 android:layout_marginTop="5dp"
                 android:background="@color/white" />
@@ -46,6 +50,7 @@
                 android:id="@+id/divider3"
                 android:layout_width="30dp"
                 android:layout_height="2dp"
+                android:backgroundTint="@color/white"
                 android:layout_marginTop="5dp"
                 android:background="@color/white" />
 

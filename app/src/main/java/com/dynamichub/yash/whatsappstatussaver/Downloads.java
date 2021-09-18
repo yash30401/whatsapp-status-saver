@@ -176,24 +176,28 @@ public class Downloads extends AppCompatActivity {
 
     public void iconHomePage(View view){
         //When someone clicks on icon of menu of home this function runs
+        dialog.dismiss();
         Intent intent=new Intent(this,MainActivity.class);
         startActivity(intent);
     }
 
     public void homePage(View view){
         //When someone clicks on button of menu of home this function runs
+        dialog.dismiss();
         Intent intent=new Intent(this,MainActivity.class);
         startActivity(intent);
     }
 
     public void iconDownload(View view){
         //When someone clicks on icon of menu of home this function runs
+        dialog.dismiss();
         Intent intent=new Intent(this,Downloads.class);
         startActivity(intent);
     }
 
     public void download(View view){
         //When someone clicks on button of menu of home this function runs
+        dialog.dismiss();
         Intent intent=new Intent(this,Downloads.class);
         startActivity(intent);
     }
@@ -210,6 +214,61 @@ public class Downloads extends AppCompatActivity {
         dialog.dismiss();
         Dialog dialog2=new Dialog(Downloads.this);
         dialog2.setContentView(R.layout.howtolayout);
+
+        dialog2.show();
+
+    }
+
+
+    public void privacyicon(View view){
+        dialog.dismiss();
+        Dialog dialog2=new Dialog(Downloads.this);
+        dialog2.setContentView(R.layout.privacylayout);
+
+        dialog2.show();
+
+    }
+
+    public void privacypolicybtn(View view){
+        dialog.dismiss();
+        Dialog dialog2=new Dialog(Downloads.this);
+        dialog2.setContentView(R.layout.privacylayout);
+
+        dialog2.show();
+
+    }
+
+    public void termsicon(View view){
+        dialog.dismiss();
+        Dialog dialog2=new Dialog(Downloads.this);
+        dialog2.setContentView(R.layout.termslayout);
+
+        dialog2.show();
+
+    }
+
+    public void termsbtn(View view){
+        dialog.dismiss();
+        Dialog dialog2=new Dialog(Downloads.this);
+        dialog2.setContentView(R.layout.termslayout);
+
+        dialog2.show();
+
+    }
+
+    public void abticon(View view){
+        dialog.dismiss();
+        Dialog dialog2=new Dialog(Downloads.this);
+        dialog2.setContentView(R.layout.aboutlayout);
+
+        dialog2.show();
+
+    }
+
+    public void abtbtn(View view){
+        dialog.dismiss();
+        Dialog dialog2=new Dialog(Downloads.this);
+        dialog2.setContentView(R.layout.aboutlayout);
 
         dialog2.show();
 
