@@ -43,7 +43,7 @@ public class Downloads extends AppCompatActivity {
 
     ArrayList<ModelClass> fileslist=new ArrayList<>();
 
-
+    Button howto;
 
 
 
@@ -89,7 +89,18 @@ public class Downloads extends AppCompatActivity {
         deletedButton=findViewById(R.id.deletedownloadsbutton);
         sharedownloadbutton=findViewById(R.id.shareDownloadButton);
 
+        howto=findViewById(R.id.howto);
 
+        howto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Dialog dialog=new Dialog(Downloads.this);
+                dialog.setContentView(R.layout.howtolayout);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.getWindow().setGravity(Gravity.CENTER);
+                dialog.show();
+            }
+        });
 
 
 
@@ -204,9 +215,11 @@ public class Downloads extends AppCompatActivity {
 
     public void iconhowto(View view){
         dialog.dismiss();
-        Dialog dialog=new Dialog(Downloads.this);
-        dialog.setContentView(R.layout.howtolayout);
-        dialog.show();
+        Dialog dialog2=new Dialog(Downloads.this);
+        dialog2.setContentView(R.layout.howtolayout);
+        dialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog2.getWindow().setGravity(Gravity.CENTER);
+        dialog2.show();
 
     }
 
@@ -214,6 +227,8 @@ public class Downloads extends AppCompatActivity {
         dialog.dismiss();
         Dialog dialog2=new Dialog(Downloads.this);
         dialog2.setContentView(R.layout.howtolayout);
+        dialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog2.getWindow().setGravity(Gravity.CENTER);
 
         dialog2.show();
 
@@ -224,7 +239,8 @@ public class Downloads extends AppCompatActivity {
         dialog.dismiss();
         Dialog dialog2=new Dialog(Downloads.this);
         dialog2.setContentView(R.layout.privacylayout);
-
+        dialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog2.getWindow().setGravity(Gravity.CENTER);
         dialog2.show();
 
     }
@@ -233,7 +249,8 @@ public class Downloads extends AppCompatActivity {
         dialog.dismiss();
         Dialog dialog2=new Dialog(Downloads.this);
         dialog2.setContentView(R.layout.privacylayout);
-
+        dialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog2.getWindow().setGravity(Gravity.CENTER);
         dialog2.show();
 
     }
@@ -242,7 +259,8 @@ public class Downloads extends AppCompatActivity {
         dialog.dismiss();
         Dialog dialog2=new Dialog(Downloads.this);
         dialog2.setContentView(R.layout.termslayout);
-
+        dialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog2.getWindow().setGravity(Gravity.CENTER);
         dialog2.show();
 
     }
@@ -251,7 +269,8 @@ public class Downloads extends AppCompatActivity {
         dialog.dismiss();
         Dialog dialog2=new Dialog(Downloads.this);
         dialog2.setContentView(R.layout.termslayout);
-
+        dialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog2.getWindow().setGravity(Gravity.CENTER);
         dialog2.show();
 
     }
@@ -260,7 +279,8 @@ public class Downloads extends AppCompatActivity {
         dialog.dismiss();
         Dialog dialog2=new Dialog(Downloads.this);
         dialog2.setContentView(R.layout.aboutlayout);
-
+        dialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog2.getWindow().setGravity(Gravity.CENTER);
         dialog2.show();
 
     }
@@ -269,7 +289,8 @@ public class Downloads extends AppCompatActivity {
         dialog.dismiss();
         Dialog dialog2=new Dialog(Downloads.this);
         dialog2.setContentView(R.layout.aboutlayout);
-
+        dialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog2.getWindow().setGravity(Gravity.CENTER);
         dialog2.show();
 
     }

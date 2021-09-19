@@ -9,8 +9,8 @@ android {
         applicationId "com.dynamichub.yash.whatsappstatussaver"
         minSdk 21
         targetSdk 31
-        versionCode 3
-        versionName '3'
+        versionCode 8
+        versionName '3.4'
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

@@ -37,6 +37,8 @@ public class VideoStatus extends AppCompatActivity {
     LinearLayout layoutMenuicon;
     Dialog dialog;
 
+    Button howto;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +58,20 @@ public class VideoStatus extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 openMenu();
+            }
+        });
+
+
+        howto=findViewById(R.id.howto);
+
+        howto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Dialog dialog=new Dialog(VideoStatus.this);
+                dialog.setContentView(R.layout.howtolayout);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.getWindow().setGravity(Gravity.CENTER);
+                dialog.show();
             }
         });
 
@@ -182,9 +198,11 @@ public class VideoStatus extends AppCompatActivity {
 
     public void iconhowto(View view){
         dialog.dismiss();
-        Dialog dialog=new Dialog(VideoStatus.this);
-        dialog.setContentView(R.layout.howtolayout);
-        dialog.show();
+        Dialog dialog2=new Dialog(VideoStatus.this);
+        dialog2.setContentView(R.layout.howtolayout);
+        dialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog2.getWindow().setGravity(Gravity.CENTER);
+        dialog2.show();
 
     }
 
@@ -192,7 +210,8 @@ public class VideoStatus extends AppCompatActivity {
         dialog.dismiss();
         Dialog dialog2=new Dialog(VideoStatus.this);
         dialog2.setContentView(R.layout.howtolayout);
-
+        dialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog2.getWindow().setGravity(Gravity.CENTER);
         dialog2.show();
 
     }
@@ -201,7 +220,8 @@ public class VideoStatus extends AppCompatActivity {
         dialog.dismiss();
         Dialog dialog2=new Dialog(VideoStatus.this);
         dialog2.setContentView(R.layout.privacylayout);
-
+        dialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog2.getWindow().setGravity(Gravity.CENTER);
         dialog2.show();
 
     }
@@ -210,7 +230,8 @@ public class VideoStatus extends AppCompatActivity {
         dialog.dismiss();
         Dialog dialog2=new Dialog(VideoStatus.this);
         dialog2.setContentView(R.layout.privacylayout);
-
+        dialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog2.getWindow().setGravity(Gravity.CENTER);
         dialog2.show();
 
     }
@@ -219,7 +240,8 @@ public class VideoStatus extends AppCompatActivity {
         dialog.dismiss();
         Dialog dialog2=new Dialog(VideoStatus.this);
         dialog2.setContentView(R.layout.termslayout);
-
+        dialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog2.getWindow().setGravity(Gravity.CENTER);
         dialog2.show();
 
     }
@@ -228,7 +250,8 @@ public class VideoStatus extends AppCompatActivity {
         dialog.dismiss();
         Dialog dialog2=new Dialog(VideoStatus.this);
         dialog2.setContentView(R.layout.termslayout);
-
+        dialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog2.getWindow().setGravity(Gravity.CENTER);
         dialog2.show();
 
     }
@@ -237,7 +260,8 @@ public class VideoStatus extends AppCompatActivity {
         dialog.dismiss();
         Dialog dialog2=new Dialog(VideoStatus.this);
         dialog2.setContentView(R.layout.aboutlayout);
-
+        dialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog2.getWindow().setGravity(Gravity.CENTER);
         dialog2.show();
 
     }
@@ -246,7 +270,8 @@ public class VideoStatus extends AppCompatActivity {
         dialog.dismiss();
         Dialog dialog2=new Dialog(VideoStatus.this);
         dialog2.setContentView(R.layout.aboutlayout);
-
+        dialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog2.getWindow().setGravity(Gravity.CENTER);
         dialog2.show();
 
     }

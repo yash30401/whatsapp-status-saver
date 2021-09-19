@@ -135,6 +135,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Dialog dialog=new Dialog(MainActivity.this);
                 dialog.setContentView(R.layout.howtolayout);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.getWindow().setGravity(Gravity.CENTER);
                 dialog.show();
             }
         });
@@ -295,9 +297,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void iconhowto(View view){
         dialog.dismiss();
-        Dialog dialog=new Dialog(MainActivity.this);
-        dialog.setContentView(R.layout.howtolayout);
-        dialog.show();
+        Dialog dialog2=new Dialog(MainActivity.this);
+        dialog2.setContentView(R.layout.howtolayout);
+        dialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog2.getWindow().setGravity(Gravity.CENTER);
+        dialog2.show();
 
     }
 
@@ -305,7 +309,8 @@ public class MainActivity extends AppCompatActivity {
         dialog.dismiss();
         Dialog dialog2=new Dialog(MainActivity.this);
         dialog2.setContentView(R.layout.howtolayout);
-
+        dialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog2.getWindow().setGravity(Gravity.CENTER);
         dialog2.show();
 
     }
@@ -313,6 +318,8 @@ public class MainActivity extends AppCompatActivity {
     public void privacyicon(View view){
         dialog.dismiss();
         Dialog dialog2=new Dialog(MainActivity.this);
+        dialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog2.getWindow().setGravity(Gravity.CENTER);
         dialog2.setContentView(R.layout.privacylayout);
 
         dialog2.show();
@@ -322,6 +329,9 @@ public class MainActivity extends AppCompatActivity {
     public void privacypolicybtn(View view){
         dialog.dismiss();
         Dialog dialog2=new Dialog(MainActivity.this);
+        dialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog2.getWindow().setGravity(Gravity.CENTER);
+
         dialog2.setContentView(R.layout.privacylayout);
 
         dialog2.show();
@@ -332,7 +342,8 @@ public class MainActivity extends AppCompatActivity {
         dialog.dismiss();
         Dialog dialog2=new Dialog(MainActivity.this);
         dialog2.setContentView(R.layout.termslayout);
-
+        dialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog2.getWindow().setGravity(Gravity.CENTER);
         dialog2.show();
 
     }
@@ -341,7 +352,8 @@ public class MainActivity extends AppCompatActivity {
         dialog.dismiss();
         Dialog dialog2=new Dialog(MainActivity.this);
         dialog2.setContentView(R.layout.termslayout);
-
+        dialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog2.getWindow().setGravity(Gravity.CENTER);
         dialog2.show();
 
     }
@@ -350,7 +362,8 @@ public class MainActivity extends AppCompatActivity {
         dialog.dismiss();
         Dialog dialog2=new Dialog(MainActivity.this);
         dialog2.setContentView(R.layout.aboutlayout);
-
+        dialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog2.getWindow().setGravity(Gravity.CENTER);
         dialog2.show();
 
     }
@@ -359,7 +372,8 @@ public class MainActivity extends AppCompatActivity {
         dialog.dismiss();
         Dialog dialog2=new Dialog(MainActivity.this);
         dialog2.setContentView(R.layout.aboutlayout);
-
+        dialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog2.getWindow().setGravity(Gravity.CENTER);
         dialog2.show();
 
     }
